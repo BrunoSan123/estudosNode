@@ -1,15 +1,27 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import axios from 'axios';
+import HeaderBlogM from './materialize/headerBlogM';
+import SideBarMBlog from './materialize/sidebarM';
+import ConteudoMblog from './materialize/conteudoM';
+import FooterBlogM from './materialize/footerBlogM';
+
 
 class App extends Component {
   constructor(props){
     super(props)
+
+    this.state ={
+      resultado: []
+    }
     axios
       .get('/postagens')
       .then(resultado=>{
         console.log(resultado)
+        this.setState({
+         resultado: resultado.data[0]
+        })
       })
 
       axios
@@ -20,22 +32,13 @@ class App extends Component {
   }
   render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="grid">
+     <HeaderBlogM/>
+     <SideBarMBlog/>
+     <ConteudoMblog posts={this.state.resultado}/>
+     <FooterBlogM/>
+  </div>
+    
   );
 }
 }

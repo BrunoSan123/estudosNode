@@ -31,5 +31,11 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"http://localhost:3001/api"
+  "proxy": "http://localhost:3001/api",
+  "devDependencies": {
+    "carbon-components": "^10.9.3",
+    "carbon-components-react": "^7.9.3",
+    "carbon-icons": "^7.0.7",
+    "react-materialize": "^3.5.9"
+  }
 }
